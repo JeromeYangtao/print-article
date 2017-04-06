@@ -6,78 +6,62 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <link rel="stylesheet" href="highlight.css">
+    <script src="highlight.js"></script>
     <style>
         #show {
             white-space: pre;
             font-family: monospace;
-            font-size: 16px;
+            font-size: 18px;
             color: white;
-        }
-        
-        body {
-            background: #1E1E1E;
-        }
-        
-        .purpl {
-            color: #9872A2;
-        }
-        
-        .blue {
-            color: #2A569C;
-        }
-        
-        .orange {
-            color: #CE5329;
-        }
-        
-        .green {
-            color: #869627;
         }
     </style>
 </head>
 
-<body>
-    <div id="show">
-
-    </div>
-    <span class="green"></span>
+<body class="language-javascript">
+    <pre>
+        <code id="show" class="javascript">
+        </code>
+    </pre>
     <script>
-        var me = `<span class="purpl">var</span> <span class="blue">me</span> = {
-            name: <span class="blue">ThomsonYang</span>,
-            birth: <span class="blue">19970505</span>,
-            gender: <span class="blue">male</span>,
-            profession: <span class="blue">student</span>,
+        var me = `
+        var me = {
+            name: 'ThomsonYang',
+            birth: new Date(1997, 05, 05),
+            gender: 'male',
+            profession: 'student',
             everyday: {
-            study: <span class="purpl">function</span>() {
-               <span class="orange">learningJavaScript();</span>  
-               <span class="orange">learningVue();</span>
-               <span class="orange">learningObjects();</span>
-             },
-            exercise: <span class="purpl">function</span>() {
-               <span class="orange">swimming();</span>
-               <span class="orange">running();</span>
-               <span class="orange">badminton();</span>
-             }
+                study: function() {
+                    learningJavaScript();
+                    learningVue();
+                    learningObjects();
+                },
+                exercise: function() {
+                    swimming();
+                    running();
+                    badminton();
+                }
             },
-           works: [
-               {
-               name: <span class="green">'blog'</span>,
-               url: <span class="green">'http://www.jianshu.com/u/6aaa718de24f'</span>
-               }, 
-               {
-               name: <span class="green">'website',</span>
-               url: <span class="green">'https:yangtao.website'</span>
-               }
-           ]    
-    }`
-
+            works: [{
+                name: 'blog',
+                url: 'http://www.jianshu.com/u/6aaa718de24f'
+            }, {
+                name: 'website',
+                url: 'https:yangtao.website'
+            }]
+        }
+        `
         var n = 0;
+
         var time = setInterval(function() {
             n = n + 1
             if (n > me.length) {
+                show.innerHTML = me.substring(0, n);
+                hljs.highlightBlock(show);
                 clearInterval(time);
             }
             show.innerHTML = me.substring(0, n);
+            hljs.highlightBlock(show);
         }, 10);
     </script>
 </body>
